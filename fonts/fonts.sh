@@ -10,7 +10,7 @@ AMSURL="https://mirrors.ctan.org/install/fonts/amsfonts.tds.zip"
 LMURL="https://mirrors.ctan.org/fonts/lm.zip"
 
 # HTTP retrieval program
-HGET="ftp -S dont -o"
+HGET="wget -c -O"
 
 # Ghostscript fonts
 echo "Retrieving $URWURL"
@@ -24,7 +24,7 @@ rm -r urw-base35*/
 echo "Retrieving $AMSURL"
 $HGET amsfonts.zip $AMSURL
 $HGET lmfonts.zip $LMURL
-bsdunzip -q amsfonts.zip 'fonts/**'
+unzip -q amsfonts.zip 'fonts/**'
 for i in euler symbols; do
 	for x in fonts/afm/public/amsfonts/$i/*.afm
 	do
@@ -36,7 +36,7 @@ for i in euler symbols; do
 	done
 done
 rm -rf fonts
-bsdunzip -q lmfonts.zip 'lm/fonts/**'
+unzip -q lmfonts.zip 'lm/fonts/**'
 for x in lm/fonts/afm/public/lm/*.afm
 do
 	mv $x ComputerModern/CM/`basename $x .afm | tr a-z A-Z`.afm
