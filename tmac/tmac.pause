@@ -1,0 +1,4 @@
+.de pause
+\X'pause'
+..
+.chop pause

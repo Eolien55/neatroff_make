@@ -1,0 +1,48 @@
+.fp - MSBM10
+.fp - EUFM10
+.fp - EUFB10
+.fp - EUSM10
+.fp - EUSB10
+.fp - EURM10
+.fp - EURB10
+.fp - EUEX10
+.fp - LMSS10
+.fp - LMTT10
+.fp - LMBSY10
+.fp - LMMI10
+.fp - LMMIB10
+.\"define _scr @ font rsfs10 @
+.EQ
+delim @@
+define _bb @ font MSBM10 @
+define _frak @ font EUFM10 @
+define _frakb @ font EUFB10 @
+define _cal @ font EUSM10 @
+define _calb @ font EUSB10 @
+define _eul @ font EURM10 @
+define _eulb @ font EURB10 @
+define _eulit @ font EUEX10 @
+define _s @ font LMSS10 @
+define _tt @ font LMTT10 @
+
+define _b @ font LMBSY10 @
+define _i @ font LMMI10 @
+define _bi @ font LMMIB10 @
+
+define forall @\(fa@
+define fa @\(fa@
+define in @\(mo@
+define te @\(te@
+
+define sum @{vcenter roman "\N'summationdisplay'"}@
+define tsum @{vcenter roman "\N'summationtext'"}@
+define prod @{vcenter roman "\N'productdisplay'"}@
+define tprod @{vcenter roman "\N'producttext'"}@
+define int @{vcenter roman "\N'integraldisplay'"}@
+define iff @{vcenter roman "\N'arrowdblboth'"}@
+define in @{vcenter roman "\N'element'"}@
+define parallel @{vcenter roman "\N'uni2225'"}@
+define perp @{vcenter roman "⊥"}@
+define small @size -4@
+.EN
+.font latex

@@ -4,11 +4,15 @@
 BASE = $(PWD)
 
 # There is no need to install it, but if you wish it, this is the location.
-#BASE = /opt/share/neatroff
+BASE = /usr/local/
 
 INSTALL = install
 MKDIR = mkdir -p -m 755
 PWD = $${PWD}
+
+NEATREPOS = neatroff neatpost neatmkfn neateqn neatrefer
+NEATREPOS_GIT = $(REPOS:%=%.git)
+REPOS = $(NEATREPOS) troff
 
 all: help
 
@@ -23,30 +27,29 @@ help:
 	@echo "   install     Install Neatroff in $(DESTDIR)$(BASE)"
 	@echo
 
-init:
-	@echo "Cloning Git repositories"
-	@test -d neatroff || git clone https://github.com/aligrudi/neatroff.git
-	@test -d neatpost || git clone https://github.com/aligrudi/neatpost.git
-	@test -d neatmkfn || git clone https://github.com/aligrudi/neatmkfn.git
-	@test -d neateqn || git clone https://github.com/aligrudi/neateqn.git
-	@test -d neatrefer || git clone https://github.com/aligrudi/neatrefer.git
-	@test -d troff || git clone https://github.com/aligrudi/troffp9.git troff
+$(REPOS):
+	@got checkout $@.git $@
+
+$(NEATREPOS_GIT):
+	@got clone https://github.com/aligrudi/$<
+
+troff.git:
+	@got clone https://github.com/troff9p.git troff
+
+init: | $(NEATREPOS_GIT) troff.git
+	@echo "Cloned Git repositories"
 	@echo "Downloading fonts"
 	@cd fonts && sh ./fonts.sh
 
 init_fa: init
 	@cd fonts && sh ./fonts_fa.sh
 
-pull:
-	cd neatroff && git pull
-	cd neatpost && git pull
-	cd neatmkfn && git pull
-	cd neateqn && git pull
-	cd neatrefer && git pull
-	cd troff && git pull
-	git pull
+pull: | $(REPOS)
+	for i in $(REPOS); do echo $$i; cd $$i; got fetch; got merge refs/remotes/origin/master; cd ..; done
+	got fetch
+	got merge refs/remotes/origin/master
 
-comp:
+comp: | $(REPOS)
 	@echo "Compiling programs"
 	@base="$(BASE)" && cd neatroff && $(MAKE) FDIR="$$base" MDIR="$$base/tmac"
 	@base="$(BASE)" && cd neatpost && $(MAKE) FDIR="$$base" MDIR="$$base/tmac"
@@ -105,6 +108,17 @@ install:
 	@echo "Updating fontpath in font descriptions"
 	@for f in "$(DESTDIR)$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/fonts=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
 
+repoclean:
+	rm -rf $(REPOS)
+
+dist:
+	$(INSTALL) roff neatpost/post neatpost/pdf neateqn/eqn neatmkfn/mkfn neatrefer/refer soin/soin shape/shape troff/pic/pic troff/tbl/tbl "$(DESTDIR)/bin"
+	$(INSTALL) man/neateqn.1 man/neatmkfn.1 man/neatpost.1 man/neatrefer.1 man/neatroff.1 "$(DESTDIR)/man/man1"
+
+undist:
+	@for i in roff post pdf eqn mkfn refer soin shape pic tbl; do rm "$(DESTDIR)/bin/$$i"; done
+	@for i in neateqn neatmkfn neatpost neatrefer neatroff; do rm "$(DESTDIR)/man/man1/$$i"; done
+
 clean:
 	@cd neatroff && $(MAKE) clean
 	@cd neatpost && $(MAKE) clean
@@ -116,3 +130,5 @@ clean:
 	@cd soin && $(MAKE) clean
 	@test ! -d shape || (cd shape && $(MAKE) clean)
 	@rm -fr $(PWD)/devutf
+
+.PHONY: all help init init_fa comp neat install clean dist repoclean

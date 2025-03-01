@@ -48,3 +48,9 @@
 .	ie (\\n(.$=0):(\\$1) .kn 1
 .	el .kn 0
 ..
+.de lower
+.	pso echo \\$@ | sb tr '[:upper:]' '[:lower:]'
+..
+.de upper
+.	pso echo \\$@ | sb tr '[:lower:]' '[:upper:]'
+..

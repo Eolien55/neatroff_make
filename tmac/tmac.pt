@@ -1,0 +1,177 @@
+.\" A macro package for simple two-dimensional figures
+.\"
+.\" The main macros are as follows:
+.\"
+.\" .ptbeg x_min x_max y_min y_max
+.\"   Begins a figure.
+.\"
+.\" .ptend
+.\"   Ends the current figure.
+.\"
+.\" .ptdef name x y
+.\"   Define a point with the given name at (x, y).
+.\"
+.\" .ptput name
+.\"   Draw the point with the given name.
+.\"
+.\" .ptlink src dst
+.\"   Draw a line between points named src and dst.
+.\"
+.\" .ptrect llx urx
+.\"   Draw a rectangle with the given opposite vertices.
+.\"
+.\" .ptcir cen rad
+.\"   Draw a rectangle with the given center and radius.
+.\"
+.\" .pttext pos text
+.\"   Print the given text at the given position.
+.\"
+.\" .ptclr line point fill
+.\"   Set point, line, and fill colours.
+.\"
+.nr ptcir 50		\" Point circle radius in basic unit
+.nr ptlnsz 24		\" Line point size
+.ds ptfont 1		\" Font for writing point name
+.nr ptsize 10		\" Size for writing point name
+.nr ptfill 1
+.nr ptbox 1
+.ds ptclr.pt "#135
+.ds ptclr.ln "#725
+.ds ptclr.fl "#fff
+.de ptbeg
+.	br
+.	nr ptxmin 0\\$1
+.	nr ptxmax 0\\$2
+.	nr ptxwid 0\\n[ptxmax]-\\n[ptxmin]
+.	nr ptymin 0\\$3
+.	nr ptymax 0\\$4
+.	nr ptywid 0\\n[ptymax]-\\n[ptymin]
+.	nr ptwd \\n(.l-\\n(.i
+.	nr ptht \\n[ptywid]*\\n[ptwd]/\\n[ptxwid]
+.	nr ptxoff \\n(.i
+.	nr ptyoff \\n(.d+\\n[ptht]
+.	ne \\n[ptht]u
+.	ev ptenv
+.	nf
+..
+.de ptend
+.	ps \\n[ptlnsz]
+.	if \\n[ptbox] \
+\v'|\\n[ptyoff]u'\h'|\\n[ptxoff]u'\D'p \\n[ptwd]u 0 0 -\\n[ptht]u -\\n[ptwd]u 0'
+.	ps
+.	sp |\\n[ptyoff]u
+.	ev
+..
+.de ptclr
+.	if \\n(.$>0 .if !'-'\\$1' .ds ptclr.ln "\\$1
+.	if \\n(.$>1 .if !'-'\\$2' .ds ptclr.pt "\\$2
+.	if \\n(.$>2 .if !'-'\\$3' .ds ptclr.fl "\\$3
+..
+.de ptdef
+.	nr pt.\\$1.x \\$2
+.	nr pt.\\$1.y \\$3
+.	nr pt.\\$1.xu \\n[ptxoff]+((\\$2-\\n[ptxmin])*\\n[ptwd]/\\n[ptxwid])
+.	nr pt.\\$1.yu \\n[ptyoff]-((\\$3-\\n[ptymin])*\\n[ptht]/\\n[ptywid])
+.	ds pt.\\$1.s "\\$1
+.	if \\n(.$>3 .ds pt.\\$1.s "\\$4
+..
+.de ptvert
+.	cl \\*[ptclr.pt]
+\v'|\\n[pt.\\$1.yu]u'\h'|\\n[pt.\\$1.xu]u-(\\n[ptcir]u/2u)'\D'C \\n[ptcir]u'
+.	cl
+.	sp -1
+..
+.de ptdesc
+.	ptvert \\$1
+.	ft \\*[ptfont]
+.	ps \\n[ptsize]
+\v'|\\n[pt.\\$1.yu]u+1v\\$4'\h'|\\n[pt.\\$1.xu]u-(\w'\\$2'u/2u)\\$3'\\$2
+.	ft
+.	ps
+.	sp -1
+..
+.de ptput
+.	ptdesc "\\$1" "\\*[pt.\\$1.s]" \\$2 \\$3
+..
+.de ptdot
+.	nr _xu \\n[ptxoff]+((\\$2-\\n[ptxmin])*\\n[ptwd]/\\n[ptxwid])
+.	nr _yu \\n[ptyoff]-((\\$3-\\n[ptymin])*\\n[ptht]/\\n[ptywid])
+.	ft \\*[ptfont]
+.	ps \\n[ptsize]
+\v'|\\n[_yu]u+1v\\$3'\h'|\\n[xu]u-(\\n[ptcir]u/2u)'
+.	ft
+.	ps
+.	sp -1
+.	cl \\*[ptclr.pt]
+\v'|\\n[_yu]u'\h'|\\n[_xu]u-(\\n[ptcir]u/2u)'\D'C \\n[ptcir]u'
+.	cl
+.	sp -1
+..
+.de ptline
+.	nr ptxdiff (\\n[pt.\\$2.xu]-\\n[pt.\\$1.xu])
+.	nr ptydiff (\\n[pt.\\$2.yu]-\\n[pt.\\$1.yu])
+.	cl \\*[ptclr.ln]
+.	ps \\n[ptlnsz]
+\v'|\\n[pt.\\$1.yu]u'\h'|\\n[pt.\\$1.xu]u'\D'l \\n[ptxdiff]u \\n[ptydiff]u'
+.	ps
+.	cl
+.	sp -1
+..
+.de ptlink
+.	ptline \\$1 \\$2
+.	if \\n(.$>2 .ptline \\$2 \\$3
+.	if \\n(.$>3 .ptline \\$3 \\$4
+.	if \\n(.$>4 .ptline \\$4 \\$5
+.	if \\n(.$>5 .ptline \\$5 \\$6
+.	if \\n(.$>6 .ptline \\$6 \\$7
+.	if \\n(.$>7 .ptline \\$7 \\$8
+.	if \\n(.$>8 .ptline \\$8 \\$9
+.	if \\n(.$>9 .ptline \\$9 \\$(10
+.	if \\n(.$>10 .ptline \\$(10 \\$(11
+..
+.de ptput*
+.	if \\n(.$>0 .ptput \\$1
+.	if \\n(.$>1 .ptput \\$2
+.	if \\n(.$>2 .ptput \\$3
+.	if \\n(.$>3 .ptput \\$4
+.	if \\n(.$>4 .ptput \\$5
+.	if \\n(.$>5 .ptput \\$6
+.	if \\n(.$>6 .ptput \\$7
+.	if \\n(.$>7 .ptput \\$8
+.	if \\n(.$>8 .ptput \\$9
+.	if \\n(.$>9 .ptput \\$(10
+.	if \\n(.$>10 .ptput \\$(11
+..
+.de ptseg
+.	ptlink \\$1 \\$2
+.	ptvert \\$1
+.	ptvert \\$2
+..
+.de ptrect
+.	nr ptxdiff (\\n[pt.\\$2.xu]-\\n[pt.\\$1.xu])
+.	nr ptydiff (\\n[pt.\\$2.yu]-\\n[pt.\\$1.yu])
+.	ps \\n[ptlnsz]
+.	if \\n[ptfill] \{\
+\m[\\*[ptclr.fl]]\v'|\\n[pt.\\$1.yu]u'\h'|\\n[pt.\\$1.xu]u'\D'P \\n[ptxdiff]u 0u 0u \\n[ptydiff]u -\\n[ptxdiff]u 0u'\m[]
+.		sp -1
+.	\}
+\m[\\*[ptclr.ln]]\v'|\\n[pt.\\$1.yu]u'\h'|\\n[pt.\\$1.xu]u'\D'p \\n[ptxdiff]u 0u 0u \\n[ptydiff]u -\\n[ptxdiff]u 0u'\m[]
+.	sp -1
+.	ps
+..
+.de ptcir
+.	nr ptcirrad \\n[ptwd]/\\n[ptxwid]
+.	if \\n(.$>1 .nr ptcirrad \\n[ptcirrad]*(\\$2)
+.	ps \\n[ptlnsz]
+\m[\\*[ptclr.fl]]\v'|\\n[pt.\\$1.yu]u'\h'|\\n[pt.\\$1.xu]u-(\\n[ptcirrad]u/2u)'\D'C \\n[ptcirrad]u'\m[]
+\m[\\*[ptclr.ln]]\v'|\\n[pt.\\$1.yu]u'\h'|\\n[pt.\\$1.xu]u-(\\n[ptcirrad]u/2u)'\D'c \\n[ptcirrad]u'\m[]
+.	ps
+..
+.de pttext
+.	ft \\*[ptfont]
+.	ps \\n[ptsize]
+\v'|\\n[pt.\\$1.yu]u\\$3'\h'|\\n[pt.\\$1.xu]u\\$4'\\$2
+.	sp -1
+.	ft
+.	ps
+..

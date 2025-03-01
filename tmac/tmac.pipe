@@ -1,0 +1,15 @@
+.\" copied from -mgnu
+.de pso . sy
+.	sy \\$1 >/tmp/pso.\n($$
+.	so /tmp/pso.\n($$
+.	sy rm /tmp/pso.\n($$
+..
+.de mso
+.	so \n(.D/\\$1.tmac
+.	so \n(.D/tmac.\\$1
+..
+.de pipe
+.	co> pipe.cont /tmp/pipein.\n($$
+.	pso grep -v '^\.lf ' </tmp/pipein.\n($$ | \\$*
+.	sy rm /tmp/pipein.\n($$
+..

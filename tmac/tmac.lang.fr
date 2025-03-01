@@ -1,0 +1,28 @@
+.ds data-lang fr
+.\"""""""""""""""""""""""""""""""""""""""""""""""
+.\" Hyphenation
+.if !\n(.g \{\
+.\"hpf \n(.D/../hyph/fr.pat.txt \n(.D/../hyph/fr.hyp.txt \n(.D/../hyph/fr.chr.txt
+.\"hpf \n(.D/../hyph/fr.pat.txt
+\}
+.\"""""""""""""""""""""""""""""""""""""""""""""""
+.\" typo
+.de lang:char
+.	char : \~:
+.	char ; \|;
+.	char ? \|?
+.	char ! \|!
+.	char § §\|
+.	char % \|%
+.	char € \|€
+.	char « «\|
+.	char » \|»
+.	char ‹ ‹\|
+.	char › \|›
+..
+.de lang:rchar
+.	rchar : ; ? ! §  % € « » ‹ ›
+..
+.ds lq ‹
+.ds rq ›
+.lang:char

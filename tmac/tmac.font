@@ -1,0 +1,56 @@
+.\" Some cool defaults
+.de latexsymfont
+.	fp - LMEX LMEX10
+.	fp - LMSY LMSY10
+.	fp - LMMI LMMI10
+.	char { "\f[LMSY]{\fP
+.	char } "\f[LMSY]}\fP
+.	char \(<= "\f[LMSY]\(<=\fP
+.	char < "\f[LMSY]<\fP
+.	char > "\f[LMSY]>\fP
+.	char \(>= "\f[LMSY]\(>=\fP
+.	char \(mu "\f[LMSY]\(mu\fP
+.	char \(if "\f[LMSY]\(if\fP
+.	fspecial R LMSY LMEX S1 S
+.	fspecial I LMMI LMSY LMEX S1 S
+.	fspecial BI LMMIB LMSY LMEX S1 S
+.	fspecial BI LMBSY LMEX S1 S
+..
+.de latexfont
+.	fp - R LMR10
+.	fp - I LMRI10
+.	fp - B LMB10
+.	fp - BI LMBXI10
+.	fp - HD LMCSC10
+.	fp - TL LMCSC10
+.	latexsymfont
+..
+.de palatinofont
+.	fp - R PA
+.	fp - I PI
+.	fp - B PB
+.	fp - HD PB
+.	fp - TL PSC
+.	latexsymfont
+..
+.de sansfont
+.	fp - R NimbusSans-Regular
+.	fp - I NimbusSans-Italic
+.	fp - B NimbusSans-Bold
+.	fp - BI NimbusSans-BoldItalic
+.	fp - HD NimbusSans-Bold
+.	fp - TL NimbusSans-Bold
+..
+.de sansheadfont
+.	fp - R PR
+.	fp - B PB
+.	fp - I PI
+.	fp - BI PX
+.	fp - HD AB
+.	fp - AU AI
+.	fp - TL AR
+..
+.de font
+.\\$1font
+..
+.if !\*[fontfam] .font \*[fontfam]

@@ -191,7 +191,10 @@
 .	in 0
 .	ev
 .	di
-\s-4\u\\*[en.footsign]\d\s+4
+.	\" E55 CUSTOM
+.	ds en.footsign.post "\\$1
+.	\" E55 CUSTOM
+\s-4\u\\*[en.footsign]\d\s+4\\*[en.footsign.post]
 .	nr en.footpos -\\n(dn
 .	ch FT \\n[en.footpos]u
 ..
