@@ -23,6 +23,6 @@
 .de lang:rchar
 .	rchar : ; ? ! §  % € « » ‹ ›
 ..
-.ds lq ‹
-.ds rq ›
+.char \(lq «
+.char \(rq »
 .lang:char

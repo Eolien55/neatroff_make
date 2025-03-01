@@ -296,13 +296,13 @@
 .	ti \\n(.iu
 .	RT
 .	ft HD
-.	nr head.size \\n(PS+5
+.	nr head.size \\n(PS
 .	ie \\n[head.right] \{
-.		nr head.size +5
+.		nr head.size +8
 .		nr head.size -(2*\\$1)
 .	\}
 .	el \{
-.		nr head.size +5
+.		nr head.size +8
 .		nr head.size -(2*\\$1)
 .	\}
 .	if \\n[head.size]<(\\n(PS+2) .nr head.size \\n(PS+2
@@ -353,9 +353,9 @@
 .	if \\n(NS-5 .as SN \\n(H6.
 .	if \\n(NS-6 .as SN \\n(H7.
 .	chop SN
-.	as SN \&  \&
-.	ie \\$2 \\*(SN\c
-.	el \\*(SN\\$2
+.	as SN "  \&
+\\*(SN\c
+.	ie !\\$2 \\$2
 .	if !\\$2 .RT
 ..
 .	\" H - fancy header
