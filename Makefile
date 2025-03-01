@@ -3,8 +3,10 @@
 # Neatroff base directory
 BASE = $(PWD)
 
+BIN = /home/e55/bin/troff
+MAN = /usr/local/man/man1
 # There is no need to install it, but if you wish it, this is the location.
-BASE = /usr/local/
+#BASE = /usr/local/
 
 INSTALL = install
 MKDIR = mkdir -p -m 755
@@ -111,13 +113,13 @@ install:
 repoclean:
 	rm -rf $(REPOS)
 
-dist:
-	$(INSTALL) roff neatpost/post neatpost/pdf neateqn/eqn neatmkfn/mkfn neatrefer/refer soin/soin shape/shape troff/pic/pic troff/tbl/tbl "$(DESTDIR)/bin"
-	$(INSTALL) man/neateqn.1 man/neatmkfn.1 man/neatpost.1 man/neatrefer.1 man/neatroff.1 "$(DESTDIR)/man/man1"
+dist: comp
+	$(INSTALL) neatroff/roff neatpost/post neatpost/pdf neateqn/eqn neatmkfn/mkfn neatrefer/refer soin/soin shape/shape troff/pic/pic troff/tbl/tbl "$(BIN)"
+	$(INSTALL) man/neateqn.1 man/neatmkfn.1 man/neatpost.1 man/neatrefer.1 man/neatroff.1 "$(MAN)"
 
 undist:
-	@for i in roff post pdf eqn mkfn refer soin shape pic tbl; do rm "$(DESTDIR)/bin/$$i"; done
-	@for i in neateqn neatmkfn neatpost neatrefer neatroff; do rm "$(DESTDIR)/man/man1/$$i"; done
+	@for i in roff post pdf eqn mkfn refer soin shape pic tbl; do rm -rf "$(BIN)/$$i"; done
+	@for i in neateqn neatmkfn neatpost neatrefer neatroff; do rm -rf "$(MAN)/$$i.1"; done
 
 clean:
 	@cd neatroff && $(MAKE) clean
