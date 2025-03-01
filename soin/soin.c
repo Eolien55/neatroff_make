@@ -52,8 +52,13 @@ static int soin(char *path)
 	return 0;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	soin(NULL);
+	if(argc == 1)
+		soin(NULL);
+	else{
+		for (int i = 1; i < argc; i++)
+			soin(argv[i]);
+	}
 	return 0;
 }
