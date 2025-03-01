@@ -9,16 +9,56 @@
 .fp - LMSS10
 .fp - LMTT10
 .fp - LMBSY10
+.fp - LMSY10
 .fp - LMMI10
 .fp - LMMIB10
+.fp - LMEX10
+.fp - LMSY10
+.fp - LMMI10
+.fp - LMMI10
+.fp - LMBSY10
+.fp - MSAM10
+.char { "\f[LMSY10]{\fP
+.char } "\f[LMSY10]}\fP
+.char \(<= "\f[LMSY10]\(<=\fP
+.char < "\f[LMSY10]<\fP
+.char > "\f[LMSY10]>\fP
+.char \(>= "\f[LMSY10]\(>=\fP
+.char \(mu "\f[LMSY10]\(mu\fP
+.char \(if "\f[LMSY10]\(if\fP
+.fspecial R MSAM10 LMSY10 LMEX10 S1 S
+.fspecial I LMMI10 LMSY10 LMEX10 S1 S
+.fspecial BI LMMIB10 LMSY10 LMEX10 S1 S
+.fspecial BI LMBSY10 LMEX10 S1 S
 .\"define _scr @ font rsfs10 @
+.
+.EQ
+define |-> @type rel roman "\N'mapsto'\(->"@
+define in @type rel roman "\(mo"@
+define iff @type rel roman "\N'arrowdblboth'"@
+define impl @type rel roman "\N'arrowdblright'"@
+define parallel @type rel {/ back 20 /}@
+define perp @type rel roman "\N'perpendicular'"@
+define circ @type bin roman "\N'circle'"@
+define fa @type punc roman "\(fa"@
+define te @type punc roman "\(te"@
+
+define sum @{type op vcenter roman "\N'summationdisplay'"}@
+define tsum @{type op vcenter roman "\N'summationtext'"}@
+define prod @{type op vcenter roman "\N'productdisplay'"}@
+define tprod @{type op vcenter roman "\N'producttext'"}@
+define int @{type op vcenter roman "\N'integraldisplay'"}@
+define small @size -4@
+.EN
+.
 .EQ
 delim @@
 define _bb @ font MSBM10 @
 define _frak @ font EUFM10 @
 define _frakb @ font EUFB10 @
-define _cal @ font EUSM10 @
-define _calb @ font EUSB10 @
+define _cal @ font LMSY10 @
+define _eucal @ font EUSM10 @
+define _eucalb @ font EUSB10 @
 define _eul @ font EURM10 @
 define _eulb @ font EURB10 @
 define _eulit @ font EUEX10 @
@@ -26,23 +66,9 @@ define _s @ font LMSS10 @
 define _tt @ font LMTT10 @
 
 define _b @ font LMBSY10 @
+define _bold @ font LMB10 @
 define _i @ font LMMI10 @
 define _bi @ font LMMIB10 @
-
-define forall @\(fa@
-define fa @\(fa@
-define in @\(mo@
-define te @\(te@
-
-define sum @{vcenter roman "\N'summationdisplay'"}@
-define tsum @{vcenter roman "\N'summationtext'"}@
-define prod @{vcenter roman "\N'productdisplay'"}@
-define tprod @{vcenter roman "\N'producttext'"}@
-define int @{vcenter roman "\N'integraldisplay'"}@
-define iff @{vcenter roman "\N'arrowdblboth'"}@
-define in @{vcenter roman "\N'element'"}@
-define parallel @{vcenter roman "\N'uni2225'"}@
-define perp @{vcenter roman "⊥"}@
-define small @size -4@
+define _n @ roman @
 .EN
 .font latex
