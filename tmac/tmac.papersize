@@ -1,99 +1,103 @@
 .\" This supposes man/mandoc/ms
 .\" mm and me will probably _not_ work with this
-.nr psize.a0.l 118.9c
-.nr psize.a0.w 84.1c
-.nr psize.a1.l 84.1c
-.nr psize.a1.w 59.4c
-.nr psize.a2.l 59.4c
-.nr psize.a2.w 42c
-.nr psize.a3.l 42c
-.nr psize.a3.w 29.7c
-.nr psize.a4.l 29.7c
-.nr psize.a4.w 21c
-.nr psize.a5.l 21c
-.nr psize.a5.w 14.8c
-.nr psize.a6.l 14.8c
-.nr psize.a6.w 10.5c
+.nr p.size.a0.l 118.9c
+.nr p.size.a0.w 84.1c
+.nr p.size.a1.l 84.1c
+.nr p.size.a1.w 59.4c
+.nr p.size.a2.l 59.4c
+.nr p.size.a2.w 42c
+.nr p.size.a3.l 42c
+.nr p.size.a3.w 29.7c
+.nr p.size.a4.l 29.7c
+.nr p.size.a4.w 21c
+.nr p.size.a5.l 21c
+.nr p.size.a5.w 14.8c
+.nr p.size.a6.l 14.8c
+.nr p.size.a6.w 10.5c
 .
-.nr psize.b0.l 141.4c
-.nr psize.b0.w 100c
-.nr psize.b1.l 100c
-.nr psize.b1.w 70.7c
-.nr psize.b2.l 70.7c
-.nr psize.b2.w 50c
-.nr psize.b3.l 50c
-.nr psize.b3.w 35.3c
-.nr psize.b4.l 35.3c
-.nr psize.b4.w 25c
-.nr psize.b5.l 25c
-.nr psize.b5.w 17.6c
-.nr psize.b6.l 17.6c
-.nr psize.b6.w 12.5c
+.nr p.size.b0.l 141.4c
+.nr p.size.b0.w 100c
+.nr p.size.b1.l 100c
+.nr p.size.b1.w 70.7c
+.nr p.size.b2.l 70.7c
+.nr p.size.b2.w 50c
+.nr p.size.b3.l 50c
+.nr p.size.b3.w 35.3c
+.nr p.size.b4.l 35.3c
+.nr p.size.b4.w 25c
+.nr p.size.b5.l 25c
+.nr p.size.b5.w 17.6c
+.nr p.size.b6.l 17.6c
+.nr p.size.b6.w 12.5c
 .
-.nr psize.c0.l 129.7c
-.nr psize.c0.w 91.7c
-.nr psize.c1.l 91.7c
-.nr psize.c1.w 64.8c
-.nr psize.c2.l 64.8c
-.nr psize.c2.w 45.8c
-.nr psize.c3.l 45.8c
-.nr psize.c3.w 32.4c
-.nr psize.c4.l 32.4c
-.nr psize.c4.w 22.9c
-.nr psize.c5.l 22.9c
-.nr psize.c5.w 16.2c
-.nr psize.c6.l 16.2c
-.nr psize.c6.w 11.4c
+.nr p.size.c0.l 129.7c
+.nr p.size.c0.w 91.7c
+.nr p.size.c1.l 91.7c
+.nr p.size.c1.w 64.8c
+.nr p.size.c2.l 64.8c
+.nr p.size.c2.w 45.8c
+.nr p.size.c3.l 45.8c
+.nr p.size.c3.w 32.4c
+.nr p.size.c4.l 32.4c
+.nr p.size.c4.w 22.9c
+.nr p.size.c5.l 22.9c
+.nr p.size.c5.w 16.2c
+.nr p.size.c6.l 16.2c
+.nr p.size.c6.w 11.4c
 .
-.nr psize.d0.l 109.0c
-.nr psize.d0.w 77.1c
-.nr psize.d1.l 77.1c
-.nr psize.d1.w 54.5c
-.nr psize.d2.l 54.5c
-.nr psize.d2.w 38.5c
-.nr psize.d3.l 38.5c
-.nr psize.d3.w 27.2c
-.nr psize.d4.l 27.2c
-.nr psize.d4.w 19.2c
-.nr psize.d5.l 19.2c
-.nr psize.d5.w 13.6c
-.nr psize.d6.l 13.6c
-.nr psize.d6.w 9.6c
+.nr p.size.d0.l 109.0c
+.nr p.size.d0.w 77.1c
+.nr p.size.d1.l 77.1c
+.nr p.size.d1.w 54.5c
+.nr p.size.d2.l 54.5c
+.nr p.size.d2.w 38.5c
+.nr p.size.d3.l 38.5c
+.nr p.size.d3.w 27.2c
+.nr p.size.d4.l 27.2c
+.nr p.size.d4.w 19.2c
+.nr p.size.d5.l 19.2c
+.nr p.size.d5.w 13.6c
+.nr p.size.d6.l 13.6c
+.nr p.size.d6.w 9.6c
 .
-.nr psize.letter.l 11i
-.nr psize.letter.w 8.5i
-.nr psize.legal.l 14i
-.nr psize.legal.w 8.5i
-.nr psize.tabloid.l 17i
-.nr psize.tabloid.w 11i
-.nr psize.ledger.l 11i
-.nr psize.ledger.w 17i
-.nr psize.statement.l 8.5i
-.nr psize.statement.w 5.5i
-.\" These dimensions for executive psize.f are what all printer
+.nr p.size.letter.l 11i
+.nr p.size.letter.w 8.5i
+.nr p.size.legal.l 14i
+.nr p.size.legal.w 8.5i
+.nr p.size.tabloid.l 17i
+.nr p.size.tabloid.w 11i
+.nr p.size.ledger.l 11i
+.nr p.size.ledger.w 17i
+.nr p.size.statement.l 8.5i
+.nr p.size.statement.w 5.5i
+.\" These dimensions for executive p.size.f are what all printer
 .\" manufacturers use.
-.nr psize.executive.l 10.5i
-.nr psize.executive.w 7.25i
+.nr p.size.executive.l 10.5i
+.nr p.size.executive.w 7.25i
 .
-.nr psize.com10.l 9.5i
-.nr psize.com10.w 4.125i
-.nr psize.monarch.l 7.5i
-.nr psize.monarch.w 3.875i
-.nr psize.dl.l 22c
-.nr psize.dl.w 11c
+.nr p.size.com10.l 9.5i
+.nr p.size.com10.w 4.125i
+.nr p.size.monarch.l 7.5i
+.nr p.size.monarch.w 3.875i
+.nr p.size.dl.l 22c
+.nr p.size.dl.w 11c
 .
-.de psize.set
-.	nr LL (\\n[psize.\\$1.\\$2]-2i)
+.de p.size.set
+.\"	nr LL \\$1-2i
+.	nr LL \\$1-(2*\\n(.ou)
 .	nr LT \\n(LL
 .	nr FL \\n(LL-0.5i
-.	nr pl \\n[psize.\\$1.\\$3]-0.5c
+.	nr pl \\$2-0.5c
 .	pl \\n(plu
 .	rm pl
 ..
-.de papersize
-.	psize.set \\$1 w l
+.de p.size.setname
+.	p.size.set \\n[psize.\\$1.\\$2] \\n[psize.\\$1.\\$3]
 ..
-.if !\*[paper] \{
-.	ie !\*[paperl] .psize.set \*[paper] l w
-.	el .psize.set \*[paper] w l
+.if !\*[p.name] \{
+.	ie !\*[p.landscape] .p.size.setname \*[p.name] l w
+.	el .p.size.setname \*[p.name] w l
+.\}
+.if !\*[p.l] \{
+.	p.size.set \*[p.l] \*[p.w]
 .\}

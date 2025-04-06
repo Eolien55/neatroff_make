@@ -83,7 +83,6 @@
 .ev 1
 .if !\\n(FL .nr FL \\n(LLu*11u/12u
 .ll \\n(FLu
-.ps 8
 .vs 10p
 .ev
 .if \\*(CH .ds CH "\(hy \\\\n(PN \(hy
@@ -315,8 +314,8 @@
 .ft 3
 .ps \\n(PS
 .if !\\n(TN \{\
-.	ps +2
-.	vs \\n(.s+2
+.	\"ps +2
+.	\"vs \\n(.s+2
 .	rm CS\}
 .hy 0
 .if h .ce 999
@@ -1206,7 +1205,7 @@ Bell Laboratories
 .rn FK FE
 .nf
 .ev 1
-.ps \\n(PS-2
+.\"ps \\n(PS-2
 .vs \\n(.s+2p
 .ev
 .if !\\n(KG .nr FP 0 
